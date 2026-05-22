@@ -1,0 +1,20 @@
+{
+  "name": "sdp-brand-assets",
+  "version": "0.1.0",
+  "description": "Canonical brand assets (logo, favicons, color tokens, company info) for Stacy's Digital Playground apps. Source of truth — every SDP app pulls from here.",
+  "main": "tokens.ts",
+  "types": "tokens.ts",
+  "files": [
+    "logo.svg",
+    "tokens.ts",
+    "tokens.json",
+    "favicons/"
+  ],
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StacyHawley/sdp-brand-assets.git"
+  },
+  "author": "Reel Influence Media, LLC",
+  "license": "UNLICENSED"
+}
