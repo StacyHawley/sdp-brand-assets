@@ -21,6 +21,14 @@ if [ -d "$LOCAL_DIR" ]; then
   cp "$LOCAL_DIR/logo.svg" public/logo.svg
   if [ -d "$LOCAL_DIR/favicons" ] && [ "$(ls -A "$LOCAL_DIR/favicons" 2>/dev/null)" ]; then
     cp "$LOCAL_DIR/favicons/"* public/
+    # Next.js App Router (13+) uses app/favicon.ico via file-based convention,
+    # which OVERRIDES public/favicon.ico AND the metadata.icons config.
+    # create-next-app scaffolds a default Next.js triangle icon there.
+    # We must also copy the SDP favicon.ico to app/ to override that default.
+    if [ -f "$LOCAL_DIR/favicons/favicon.ico" ] && [ -d "app" ]; then
+      cp "$LOCAL_DIR/favicons/favicon.ico" app/favicon.ico
+      echo "  Also copied favicon.ico -> app/favicon.ico (overrides Next.js default)"
+    fi
   fi
   cp "$LOCAL_DIR/tokens.ts" app/lib/brand.ts
 else
